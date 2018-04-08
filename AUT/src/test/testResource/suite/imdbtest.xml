@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="IMDB Suite">
+    <listeners>
+        <listener class-name="com.aut.listener.TestListener"/>
+    </listeners>
+    <test name="IMDB test">
+        <parameter name="browser" value="firefox"/>
+        <parameter name="movieName" value="fukrey"/>
+        <parameter name="linkToBeClickOn" value="www.imdb.com"/>
+        <parameter name="textInsideAnchorTag" value="IMDb"/>
+        <classes>
+            <class name="com.aut.tests.IMDBRatingTest"/>
+        </classes>
+    </test><!-- test -->
+</suite><!-- suite-->

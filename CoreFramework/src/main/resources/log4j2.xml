@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration name="Logger Configuration" status="INFO">
+    <Properties>
+        <Property name="AllLogsInfo">${sys:user.dir}/logs/AllLogs/AllLogsInfo.log</Property>
+        <Property name="ErrorLogsInfo">${sys:user.dir}/logs/AllLogs/ErrorLogsInfo</Property>
+    </Properties>
+
+    <!--################ List Of Appenders ########################-->
+    <Appenders>
+        <!--################ Console Appender ########################-->
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%d{yyy-MM-dd HH:mm:ss.SSS}] [%t] [%-5level] %logger{36} - %msg%n"/>
+        </Console>
+        <!--################ File Appender ########################-->
+        <File name="FileAppender" fileName="${AllLogsInfo}" append="true">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+        <!--################ RollingFile Appender ########################-->
+        <RollingFile name="RollingFileAppender" fileName="${ErrorLogsInfo}.log"
+                     filePattern="${ErrorLogsInfo}-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout>
+                <pattern>[%d{yyy-MM-dd HH:mm:ss.SSS}] [%t] [%-5level] %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <!--size can be specified in bytes, with the suffix KB, MB or GB, for example 20MB.-->
+                <SizeBasedTriggeringPolicy size="500 KB"/>
+            </Policies>
+            <DefaultRolloverStrategy fileIndex="nomax"/>
+        </RollingFile> <!--End of RollingFile-->
+    </Appenders> <!-- End of Appenders-->
+    <!--########### Loggers ###################################-->
+    <Loggers>
+        <Root level="All" additivity="TRUE">
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="FileAppender" level="ALL"/>
+            <AppenderRef ref="RollingFileAppender" level="ERROR"/>
+        </Root> <!--End of Root-->
+    </Loggers> <!--End of Loggers-->
+</Configuration> <!--End of Configuration-->

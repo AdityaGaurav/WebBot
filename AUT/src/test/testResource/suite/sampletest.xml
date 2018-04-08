@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Sample Test Suite" parallel="methods">
+    <listeners>
+        <listener class-name="com.aut.listener.TestListener"/>
+    </listeners>
+    <test name="Sample Test2">
+        <!--<parameter name="browser" value="firefox"/>-->
+        <classes>
+            <class name="com.aut.tests.AppiumTest">
+                <parameter name="browser" value="firefox"/>
+                <methods>
+                    <include name="verifyTheTimeOutHeadingText"/>
+                </methods>
+            </class>
+            <class name="com.aut.tests.AppiumTest">
+                <parameter name="browser" value="firefox"/>
+                <methods>
+                    <include name="verifyTheTimeOutHeadingText2"/>
+                    <parameter name="browser" value="chrome"/>
+                    <parameter name="host" value="local"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <!---->
+</suite><!-- suite-->

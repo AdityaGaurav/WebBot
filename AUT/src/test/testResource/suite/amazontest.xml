@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Amazon Suite">
+    <listeners>
+        <listener class-name="com.aut.listener.TestListener"/>
+    </listeners>
+    <test name="Amazon test">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="com.aut.tests.AmazonSearchTest"/>
+        </classes>
+    </test><!-- test -->
+</suite><!-- suite-->
